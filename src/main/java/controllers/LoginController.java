@@ -17,22 +17,22 @@ import util.Cypher;
 public class LoginController {
     static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
     public static final int MAX_LOGIN_ATTEMPTS = 5;
-    public static String loggedInUser;
-    public static String loggedInUserType;
+    private static String loggedInUser;
+    private static String loggedInUserType;
 
     private int attemptsLeft;
     private boolean authenticationError;
 
     @FXML
-    private Button btn_close;
+    private Button btnClose;
     @FXML
-    private Label msg_auth_error;
+    private Label msgAuthError;
     @FXML
-    private Label msg_attempts_left;
+    private Label msgAttemptsLeft;
     @FXML
-    private TextField txt_user_name;
+    private TextField txtUserName;
     @FXML
-    private TextField txt_password;
+    private TextField txtPassword;
 
     /**
      * Called automatically when the FXML is loaded.
@@ -48,7 +48,7 @@ public class LoginController {
      * Close the login stage.
      */
     public void closeLogin() {
-        Stage stage = (Stage) btn_close.getScene().getWindow();
+        Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
     }
 
@@ -58,16 +58,16 @@ public class LoginController {
     private void updateMessages() {
         // Authentication error message.
         if (authenticationError == Boolean.FALSE) {
-            msg_auth_error.setVisible(false);
+            msgAuthError.setVisible(false);
         } else {
-            msg_auth_error.setVisible(true);
+            msgAuthError.setVisible(true);
         }
 
         if (attemptsLeft == MAX_LOGIN_ATTEMPTS) {
-            msg_attempts_left.setVisible(false);
+            msgAttemptsLeft.setVisible(false);
         } else {
-            msg_attempts_left.setText("Attempts left: " + attemptsLeft);
-            msg_attempts_left.setVisible(true);
+            msgAttemptsLeft.setText("Attempts left: " + attemptsLeft);
+            msgAttemptsLeft.setVisible(true);
         }
     }
 
@@ -85,13 +85,13 @@ public class LoginController {
      * If not, update relevant messages.
      */
     public void login() {
-        String username = txt_user_name.getText();
-        String password = txt_password.getText();
+        String username = txtUserName.getText();
+        String password = txtPassword.getText();
 
         if (validateCredentails(username, password)) {
             authenticationError = Boolean.FALSE;
 
-            LOG.info("User " + loggedInUser + " logged in as " + loggedInUserType);
+            LOG.info("User {} logged in as {}", loggedInUser, loggedInUserType);
             displayHome();
         } else {
             authenticationError = Boolean.TRUE;
@@ -124,7 +124,7 @@ public class LoginController {
      * @param userName
      * @param password
      */
-    private boolean validateCredentails(String userName, String password) {
+    private static synchronized boolean validateCredentails(String userName, String password) {
         // Generate md5 hash from entered password.
         String passwordHash = Cypher.generateMD5(password);
 
@@ -147,7 +147,6 @@ public class LoginController {
     private void processAuthError() {
         updateAttemptsLeft();
         if (attemptsLeft == 0) {
-            // TODO: show error
             closeLogin();
         } else {
             updateMessages();
