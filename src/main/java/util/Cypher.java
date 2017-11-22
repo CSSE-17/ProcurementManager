@@ -1,5 +1,8 @@
 package util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
@@ -7,7 +10,10 @@ import java.security.MessageDigest;
  *
  * @author Mahendra Tennakoon
  */
-public class Cypher {
+public final class Cypher {
+    static final Logger LOG = LoggerFactory.getLogger(Cypher.class);
+
+    private Cypher() {}
 
     /**
      * Generate MD5 hash from input string
@@ -28,7 +34,7 @@ public class Cypher {
                 hashtext = "0" + hashtext;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error("md5 hashing exception", e);
         }
         return hashtext;
     }
