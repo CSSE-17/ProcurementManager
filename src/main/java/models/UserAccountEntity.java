@@ -3,7 +3,7 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_account", schema = "procurement_db", catalog = "")
+@Table(name = "user_account", schema = "procurement", catalog = "")
 public class UserAccountEntity {
     private String userName;
     private String password;
