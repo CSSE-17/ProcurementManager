@@ -105,7 +105,7 @@ public class LoginController {
     private void displayHome() {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/views/Home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/views/home.fxml"));
             Scene home = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(home);
@@ -172,5 +172,11 @@ public class LoginController {
         }
     }
 
+    public static String getLoggedInUser() {
+        return loggedInUser;
+    }
 
+    public static String getLoggedInUserType() {
+        return loggedInUserType;
+    }
 }
