@@ -53,11 +53,9 @@ public class UserDAO {
 
     public void update(UserAccountEntity user) {
         Session session = sessionFactory.openSession();
-
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
-
         session.close();
     }
 

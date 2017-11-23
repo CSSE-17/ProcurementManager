@@ -31,7 +31,7 @@ public class HomeController implements Initializable {
      * load the Requisitions FXML into center of the home borderpane.
      */
     public void loadRequisitionsPanel() {
-        loadCenterPanel("/views/HumanResources.fxml");
+        loadCenterPanel("/views/requisition.fxml");
     }
 
     /**
