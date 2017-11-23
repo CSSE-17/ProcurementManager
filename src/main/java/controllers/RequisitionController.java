@@ -47,32 +47,37 @@ public class RequisitionController {
     }
     public void loadCashPaymentsTable() {
 
-        TableColumn<RequisitionEntity, String> itemcode_col = new TableColumn<>("Item Code");
-        itemcode_col.setCellValueFactory(new PropertyValueFactory<>("Item_code"));
+        TableColumn<RequisitionEntity, String> itemcode_col = new TableColumn<>("Purchase ID");
+        itemcode_col.setCellValueFactory(new PropertyValueFactory<>("purchID"));
 
-        TableColumn<RequisitionEntity, String> itemname_col = new TableColumn<>("Item Name");
-        itemname_col.setCellValueFactory(new PropertyValueFactory<>("Item_name"));
+        TableColumn<RequisitionEntity, String> itemname_col = new TableColumn<>("Manager ID");
+        itemname_col.setCellValueFactory(new PropertyValueFactory<>("ManagerID"));
 
-        TableColumn<RequisitionEntity, String> description_col = new TableColumn<>("Description");
-        description_col.setCellValueFactory(new PropertyValueFactory<>("description"));
+        TableColumn<RequisitionEntity, String> description_col = new TableColumn<>("Supplier ID");
+        description_col.setCellValueFactory(new PropertyValueFactory<>("supID"));
 
-        TableColumn<RequisitionEntity, Integer> quantity_col = new TableColumn<>("Quantity");
-        quantity_col.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        TableColumn<RequisitionEntity, Integer> SupName = new TableColumn<>("Supplier Name");
+        SupName.setCellValueFactory(new PropertyValueFactory<>("SupName"));
 
-        TableColumn<RequisitionEntity, String> receivefrm_col = new TableColumn<>("Receive From");
-        receivefrm_col.setCellValueFactory(new PropertyValueFactory<>("receivefrm"));
+        TableColumn<RequisitionEntity, Integer> qty = new TableColumn<>("Quantity");
+        qty.setCellValueFactory(new PropertyValueFactory<>("qty"));
 
-        TableColumn<RequisitionEntity, String> receivedate_col = new TableColumn<>("Receive Date");
-        receivedate_col.setCellValueFactory(new PropertyValueFactory<>("receivedate"));
+        TableColumn<RequisitionEntity, String> amount = new TableColumn<>("Amount");
+        amount.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
-        TableColumn<RequisitionEntity, String> expiredate_col = new TableColumn<>("Expire Date");
-        expiredate_col.setCellValueFactory(new PropertyValueFactory<>("Expiredate"));
+        TableColumn<RequisitionEntity, String> itemName = new TableColumn<>("Item Name ");
+        itemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
 
-        TableColumn<RequisitionEntity, Integer> unit_price_col = new TableColumn<>("Unit Price");
-        unit_price_col.setCellValueFactory(new PropertyValueFactory<>("unit_price"));
+        TableColumn<RequisitionEntity, String> status = new TableColumn<>("status");
+        status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        TableColumn<RequisitionEntity, Integer> min_level_col = new TableColumn<>("Minimum qty Level");
-        min_level_col.setCellValueFactory(new PropertyValueFactory<>("min_level"));
+        TableColumn<RequisitionEntity, Integer> grantDate = new TableColumn<>("Grant Date");
+        grantDate.setCellValueFactory(new PropertyValueFactory<>("grantDate"));
+
+        TableColumn<RequisitionEntity, Integer> payDate = new TableColumn<>("payment Date");
+        payDate.setCellValueFactory(new PropertyValueFactory<>("payDate"));
+
+
 
         RequisitionDAO dao = new RequisitionDAO();
         requisition_tbl.setItems(dao.getAll());

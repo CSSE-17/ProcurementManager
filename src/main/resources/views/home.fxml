@@ -49,6 +49,37 @@
                                 <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="3.25" width="10.0" />
                             </effect>
                         </Button>
+                        <Button fx:id="sidebarPurchase" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadPurchasePanel" prefHeight="60.0" prefWidth="210.0" styleClass="sidemar-menu-button" text=" Purchase Orders" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="@../images/list-ingredients-32.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="3.25" width="10.0" />
+                            </effect>
+                        </Button>
+                        <Button fx:id="sidebarSuppliers" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadSupplierPanel" prefHeight="60.0" prefWidth="210.0" styleClass="sidemar-menu-button" text=" SUPPLIERS" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="@../images/group-32.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="3.25" width="10.0" />
+                            </effect>
+                        </Button>
+
                     </children>
                 </VBox>
             </children>

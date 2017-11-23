@@ -33,6 +33,12 @@ public class HomeController implements Initializable {
     public void loadRequisitionsPanel() {
         loadCenterPanel("/views/requisition.fxml");
     }
+    public void loadPurchasePanel() {
+        loadCenterPanel("/views/purchaseOrd.fxml");
+    }
+    public void loadSupplierPanel() {
+        loadCenterPanel("/views/purchaseOrd.fxml");
+    }
 
     /**
      * Loads the FXML scene to the center of home borderpane.
