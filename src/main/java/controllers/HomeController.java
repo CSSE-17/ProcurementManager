@@ -36,6 +36,14 @@ public class HomeController implements Initializable {
     }
 
     /**
+     * load the Suppliers FXML into center of the home borderpane.
+     */
+    public void loadSuppliersPanel() {
+        loadCenterPanel("/views/suppliers.fxml");
+        LOG.info("Navigated to Suppliers");
+    }
+
+    /**
      * Loads the FXML scene to the center of home borderpane.
      *
      * @param fxmlPath
