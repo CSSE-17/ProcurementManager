@@ -78,7 +78,6 @@ public class RequisitionController {
         payDate.setCellValueFactory(new PropertyValueFactory<>("payDate"));
 
 
-
         RequisitionDAO dao = new RequisitionDAO();
         requisition_tbl.setItems(dao.getAll());
 

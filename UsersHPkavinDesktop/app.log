@@ -1230,3 +1230,15 @@ Caused by: java.lang.NullPointerException: null
 23:17:37.584 [JavaFX Application Thread] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
 23:17:39.402 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/procurement_db]
 23:17:39.406 [JavaFX Application Thread] INFO  controllers.LoginController - User mahendra logged in as admin
+23:23:04.938 [JavaFX Application Thread] INFO  controllers.Main - Starting application ------------------------------------------------------------------------------
+23:23:18.277 [JavaFX Application Thread] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.2.12.Final}
+23:23:18.281 [JavaFX Application Thread] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+23:23:18.629 [JavaFX Application Thread] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+23:23:18.797 [JavaFX Application Thread] WARN  o.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+23:23:18.808 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/procurement_db]
+23:23:18.809 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root, password=****}
+23:23:18.809 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+23:23:18.816 [JavaFX Application Thread] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+23:23:19.347 [JavaFX Application Thread] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+23:23:21.010 [JavaFX Application Thread] INFO  o.hibernate.orm.connections.pooling - HHH10001008: Cleaning up connection pool [jdbc:mysql://localhost:3306/procurement_db]
+23:23:21.013 [JavaFX Application Thread] INFO  controllers.LoginController - User mahendra logged in as admin
