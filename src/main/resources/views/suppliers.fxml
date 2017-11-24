@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -57,12 +56,7 @@
                         </AnchorPane>
                     </content>
                   </TitledPane>
-                  <TableView layoutX="217.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
+                  <TableView fx:id="tableSuppliers" layoutX="217.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                </children></AnchorPane>
          </center>
       </BorderPane>

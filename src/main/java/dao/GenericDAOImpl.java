@@ -6,6 +6,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import org.hibernate.Query;
+import java.util.List;
+
 public class GenericDAOImpl<T> implements GenericDAO<T> {
     protected SessionFactory sessionFactory;
 
@@ -33,5 +36,18 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Override
+    public List read(Class c) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("from " + c.getName());
+        List list = query.list();
+
+        session.getTransaction().commit();
+        session.close();
+        return list;
     }
 }
