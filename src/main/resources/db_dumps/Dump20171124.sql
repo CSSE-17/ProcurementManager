@@ -81,3 +81,18 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-11-24 14:53:31
+
+
+DROP TABLE IF EXISTS `requisition_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `requisition_item` (
+  `reqID` varchar(20) NOT NULL,
+  `itemName` varchar(45) NOT NULL,
+  `qty` int(11) DEFAULT NULL,
+  PRIMARY KEY (`reqID`,`itemName`),
+  KEY `fk_item_idx` (`itemName`),
+  CONSTRAINT `fk_item` FOREIGN KEY (`itemName`) REFERENCES `items` (`itemName`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_req` FOREIGN KEY (`reqID`) REFERENCES `requisition` (`requisition_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
