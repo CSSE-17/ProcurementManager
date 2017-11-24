@@ -43,6 +43,10 @@ public class HomeController implements Initializable {
         LOG.info("Navigated to Suppliers");
     }
 
+    public void loadDeliveryNotePanel() {
+        loadCenterPanel("/views/DeliveryNote.fxml");
+        LOG.info("Navigated to DeliveryNote");
+    }
     public void loadItemsPanel() {
         loadCenterPanel("/views/items.fxml");
         LOG.info("Navigated to Items");
