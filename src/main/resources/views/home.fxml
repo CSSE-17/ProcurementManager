@@ -64,6 +64,21 @@
                         <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="3.25" width="10.0" />
                      </effect>
                   </Button>
+                        <Button fx:id="sidebarItems" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#loadItemsPanel" prefHeight="60.0" prefWidth="210.0" styleClass="sidemar-menu-button" text=" ITEMS" textFill="WHITE">
+                            <font>
+                                <Font name="Segoe UI Semibold" size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="@../images/add-list.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <InnerShadow blurType="ONE_PASS_BOX" height="5.0" radius="3.25" width="10.0" />
+                            </effect>
+                        </Button>
                     </children>
                 </VBox>
             </children>

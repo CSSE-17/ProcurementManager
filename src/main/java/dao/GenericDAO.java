@@ -16,4 +16,6 @@ public interface GenericDAO <T>{
      * Delete instance.
      */
     void delete(T instance);
+
+//    void update(T instance);
 }
