@@ -20,11 +20,11 @@
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>
-      <BorderPane layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="1410.0">
+      <BorderPane layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="1210.0">
          <left>
             <AnchorPane prefHeight="571.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
                <children>
-                  <TabPane layoutX="6.0" layoutY="1.0" prefHeight="580.0" prefWidth="1400.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane layoutX="-1.0" layoutY="2.0" prefHeight="579.0" prefWidth="1210.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Requisitions ">
                            <content>
@@ -43,24 +43,17 @@
                                           <Label layoutX="16.0" layoutY="301.0" prefHeight="17.0" prefWidth="72.0" text="Amount       :" />
                                           <DatePicker fx:id="req_date" layoutX="18.0" layoutY="367.0" prefHeight="25.0" prefWidth="181.0" />
                                           <Label layoutX="17.0" layoutY="348.0" prefHeight="17.0" prefWidth="71.0" text="Req Date    :" />
-                                          <Label layoutX="17.0" layoutY="394.0" prefHeight="17.0" prefWidth="72.0" text="Grant Date  :" />
-                                          <Button layoutX="23.0" layoutY="467.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: #86FC3D; -fx-border-radius: 2;" text="Grant">
-                                             <opaqueInsets>
-                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                             </opaqueInsets>
-                                          </Button>
                                           <Button layoutX="146.0" layoutY="506.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="61.0" text="Add " />
                                           <Button layoutX="85.0" layoutY="505.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="55.0" text="Update" />
                                           <Button layoutX="19.0" layoutY="503.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="58.0" text="Delete" />
-                                          <Label layoutX="18.0" layoutY="443.0" prefHeight="17.0" prefWidth="72.0" text="Status        :" />
+                                          <Label layoutX="18.0" layoutY="412.0" prefHeight="17.0" prefWidth="72.0" text="Status        :" />
                                           <Label layoutX="179.0" layoutY="325.0" prefHeight="17.0" prefWidth="28.0" text="(Rs)" />
                                           <TextField fx:id="item_name" layoutX="16.0" layoutY="273.0" prefHeight="25.0" prefWidth="186.0" />
-                                          <Label layoutX="113.0" layoutY="445.0" prefHeight="17.0" prefWidth="82.0" text="None" />
+                                          <Label layoutX="113.0" layoutY="414.0" prefHeight="17.0" prefWidth="82.0" text="None" />
                                           <TextField fx:id="site_no" layoutX="17.0" layoutY="170.0" prefHeight="25.0" prefWidth="186.0" />
                                           <Label layoutX="17.0" layoutY="252.0" prefHeight="17.0" prefWidth="82.0" text="Qty :" />
                                           <TextField fx:id="req_qty" layoutX="17.0" layoutY="220.0" prefHeight="25.0" prefWidth="186.0" />
                                           <Label layoutX="18.0" layoutY="197.0" prefHeight="17.0" prefWidth="82.0" text="Item Name  :" />
-                                          <DatePicker fx:id="grant_date" layoutX="17.0" layoutY="412.0" prefHeight="25.0" prefWidth="181.0" />
                                        </children>
                                     </Pane>
                                     <Pane layoutX="223.0" layoutY="2.0">
@@ -85,6 +78,65 @@
                                           </Label>
                                        </children>
                                     </Pane>
+                                 </children>
+                              </Pane>
+                           </content>
+                        </Tab>
+                        <Tab text="Grant">
+                           <content>
+                              <Pane prefHeight="556.0" prefWidth="1224.0">
+                                 <children>
+                                    <Pane layoutX="2.0" layoutY="2.0" prefHeight="541.0" prefWidth="218.0" style="-fx-background-color: #D5F6F9;">
+                                       <children>
+                                          <TextField fx:id="gReq_id" layoutX="16.0" layoutY="27.0" prefHeight="25.0" prefWidth="186.0" />
+                                          <Label layoutX="19.0" layoutY="9.0" prefHeight="17.0" prefWidth="82.0" text="Requisition ID :" />
+                                          <Label layoutX="16.0" layoutY="58.0" prefHeight="17.0" prefWidth="82.0" text="Manager ID :" />
+                                          <TextField fx:id="eMng_id1" layoutX="16.0" layoutY="76.0" prefHeight="25.0" prefWidth="186.0" />
+                                          <TextField fx:id="gPersonName" layoutX="16.0" layoutY="124.0" prefHeight="25.0" prefWidth="186.0" />
+                                          <Label fx:id="emp_id1" layoutX="17.0" layoutY="105.0" prefHeight="17.0" prefWidth="137.0" text="Grant Person Name : " />
+                                          <DatePicker fx:id="eReq_date" layoutX="18.0" layoutY="176.0" prefHeight="25.0" prefWidth="181.0" />
+                                          <Label layoutX="17.0" layoutY="154.0" prefHeight="17.0" prefWidth="71.0" text="Req Date    :" />
+                                          <Label layoutX="17.0" layoutY="209.0" prefHeight="17.0" prefWidth="72.0" text="Grant Date  :" />
+                                          <Button fx:id="gGrant" layoutX="20.0" layoutY="294.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: #86FC3D; -fx-border-radius: 2;" text="Grant">
+                                             <opaqueInsets>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </opaqueInsets>
+                                          </Button>
+                                          <Button layoutX="146.0" layoutY="506.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="61.0" text="Add " />
+                                          <Button layoutX="85.0" layoutY="505.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="55.0" text="Update" />
+                                          <Button layoutX="19.0" layoutY="503.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="58.0" text="Delete" />
+                                          <Label layoutX="18.0" layoutY="266.0" prefHeight="17.0" prefWidth="72.0" text="Status        :" />
+                                          <Label fx:id="gStatus" layoutX="113.0" layoutY="268.0" prefHeight="17.0" prefWidth="82.0" text="None" />
+                                          <DatePicker fx:id="gGrant_date" layoutX="17.0" layoutY="230.0" prefHeight="25.0" prefWidth="181.0" />
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="223.0" layoutY="2.0">
+                                       <children>
+                                          <TableView fx:id="gRequisition_tbl" layoutY="29.0" prefHeight="494.0" prefWidth="983.0">
+                                             <columns>
+                                                <TableColumn prefWidth="44.0" text="ID" />
+                                                <TableColumn prefWidth="86.0" text="Manager ID" />
+                                                <TableColumn prefWidth="69.0" text="Employee ID " />
+                                                <TableColumn minWidth="0.0" prefWidth="54.0" text="Site NO " />
+                                                <TableColumn minWidth="0.0" prefWidth="41.0" text="Qty " />
+                                                <TableColumn prefWidth="100.0" text="Item Name  " />
+                                                <TableColumn prefWidth="107.0" text="Req Date" />
+                                                <TableColumn minWidth="0.0" prefWidth="39.0" text="Grant Date" />
+                                                <TableColumn prefWidth="224.0" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                          <Label layoutX="12.0" layoutY="9.0" prefHeight="20.0" prefWidth="160.0" text="Requisition Details  " textFill="#2f2d2d">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Button fx:id="gDenied" layoutX="24.0" layoutY="346.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: #FF5500; -fx-border-radius: 2;" text="Denied">
+                                       <opaqueInsets>
+                                          <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                       </opaqueInsets>
+                                    </Button>
                                  </children>
                               </Pane>
                            </content>

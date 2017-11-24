@@ -62,24 +62,8 @@ public class RequisitionDAO {
     }
     public ObservableList<RequisitionEntity> getAll() {
 
-//        try {
-//            Session session = sessionFactory.openSession();
-//            session.beginTransaction();
-//            org.hibernate.query.Query query = session.createSQLQuery("select * from requisition");
-//            ObservableList<RequisitionEntity> list = FXCollections.observableArrayList(query.list());
-//
-//            session.getTransaction().commit();
-//            session.close();
-//            return list;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//        public ObservableList<Enseignant> getEnseignant() {
-             Session session = sessionFactory.openSession();
+            Session session = sessionFactory.openSession();
             ObservableList<RequisitionEntity> reqList = FXCollections.observableArrayList();
-//             session = util.HibernateUtil.
-//                    getSessionFactory().openSession();
             List<RequisitionEntity> rList = session.
                     createCriteria(RequisitionEntity.class).list();
             for (RequisitionEntity ent : rList) {
@@ -89,28 +73,7 @@ public class RequisitionDAO {
         }
 
     }
-//    public ObservableList<RequisitionEntity> findAll() {
 
-//        try {
-//            Session session = sessionFactory.openSession();
-//            session.beginTransaction();
-////            Query query = session.createSQLQuery("select * from product");
-//            ObservableList<Product> list = FXCollections.observableArrayList(query.list());
-//
-//            session.getTransaction().commit();
-//            session.close();
-//            return list;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-
-//    }
-
-//    }
-//    public List<T> findAll() {
-//        return findAll( sessionFactory.getCurrentSession().createCriteria(RequisitionEntity));
-//    }
 
 
 
