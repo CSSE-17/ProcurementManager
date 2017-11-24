@@ -12,6 +12,7 @@
         <property name="show_sql">true</property>
 
         <mapping class="models.UserAccountEntity"/>
+        <mapping class="models.SupplierEntity"/>
 
     </session-factory>
 </hibernate-configuration>
