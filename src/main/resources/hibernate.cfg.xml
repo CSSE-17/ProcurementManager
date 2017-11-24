@@ -13,6 +13,8 @@
 
         <mapping class="models.UserAccountEntity"/>
         <mapping class="models.SupplierEntity"/>
+        <mapping class="models.RequisitionEntity"/>
+        <mapping class="models.ItemsEntity"/>
 
     </session-factory>
 </hibernate-configuration>
