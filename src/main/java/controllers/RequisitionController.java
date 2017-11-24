@@ -6,13 +6,17 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.NumberStringConverter;
 import models.ItemsEntity;
+import models.SelectedItem;
 import util.UniqueID;
+
+import java.util.ArrayList;
 
 public class RequisitionController implements Controller{
     @FXML
@@ -20,11 +24,12 @@ public class RequisitionController implements Controller{
     @FXML
     private TableView tableItems;
     @FXML
-    private ChoiceBox chbItemName;
-    @FXML
     private TextField txtItemsFilter;
+    @FXML
+    private TableView tableSelectedItems;
 
     GenericDAOImpl dao;
+    private ArrayList<SelectedItem> selectedItems;
 
     public void initialize(){
         dao = new GenericDAOImpl();
@@ -32,6 +37,7 @@ public class RequisitionController implements Controller{
         txtReqID.setDisable(true);
         generateRequisitionId();
         loadItems();
+        initSelectedItems();
     }
 
     private void generateRequisitionId() {
@@ -75,6 +81,40 @@ public class RequisitionController implements Controller{
 
         tableItems.setItems(sortedItems);
         tableItems.getColumns().addAll(itemNameCol, itemPriceCol, brandCol);
+    }
+
+    private void initSelectedItems() {
+        tableSelectedItems.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        TableColumn<SelectedItem, String> itemNameCol = new TableColumn<>("Item Name");
+        itemNameCol.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+
+        TableColumn<SelectedItem, Number> qtyCol = new TableColumn<>("Quantity");
+        qtyCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        qtyCol.setCellFactory(TextFieldTableCell.<SelectedItem, Number>forTableColumn(new NumberStringConverter()));
+        qtyCol.setEditable(true);
+
+        tableSelectedItems.setEditable(true);
+        tableSelectedItems.getColumns().addAll(itemNameCol, qtyCol);
+    }
+
+    private ItemsEntity getSelectedItem() {
+        return (ItemsEntity) tableItems.getSelectionModel().selectedItemProperty().get();
+    }
+
+    public void pickItem() {
+        ItemsEntity item = getSelectedItem();
+        SelectedItem selectedItem = new SelectedItem(item.getItemName(), 0);
+
+        tableSelectedItems.getItems().add(selectedItem);
+    }
+
+    public void removeItem() {
+        ObservableList<SelectedItem> itemSelected, allItems;
+        allItems = tableSelectedItems.getItems();
+        itemSelected = tableSelectedItems.getSelectionModel().getSelectedItems();
+
+        itemSelected.forEach(allItems::remove);
     }
 
     @Override
