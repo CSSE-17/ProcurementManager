@@ -16,6 +16,7 @@
         <mapping class="models.RequisitionEntity"/>
         <mapping class="models.ItemsEntity"/>
         <mapping class="models.DeliveryNoteEntity"/>
+        <mapping class="models.RequisitionItemEntity"/>
 
     </session-factory>
 </hibernate-configuration>

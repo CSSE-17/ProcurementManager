@@ -91,6 +91,7 @@ public class RequisitionController implements Controller{
 
         TableColumn<SelectedItem, Number> qtyCol = new TableColumn<>("Quantity");
         qtyCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
         qtyCol.setCellFactory(TextFieldTableCell.<SelectedItem, Number>forTableColumn(new NumberStringConverter()));
         qtyCol.setEditable(true);
 
@@ -104,7 +105,7 @@ public class RequisitionController implements Controller{
 
     public void pickItem() {
         ItemsEntity item = getSelectedItem();
-        SelectedItem selectedItem = new SelectedItem(item.getItemName(), 0);
+        SelectedItem selectedItem = new SelectedItem(item.getItemName(), 1);
 
         tableSelectedItems.getItems().add(selectedItem);
     }
@@ -115,6 +116,11 @@ public class RequisitionController implements Controller{
         itemSelected = tableSelectedItems.getSelectionModel().getSelectedItems();
 
         itemSelected.forEach(allItems::remove);
+    }
+
+    public void createRequisition() {
+        ObservableList<SelectedItem> allItems;
+        allItems = tableSelectedItems.getItems();
     }
 
     @Override

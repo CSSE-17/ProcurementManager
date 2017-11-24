@@ -45,7 +45,7 @@
                                                       <TableView fx:id="tableSelectedItems" prefHeight="470.0" prefWidth="350.0" />
                                                       <ButtonBar prefHeight="40.0" prefWidth="200.0">
                                                         <buttons>
-                                                          <Button mnemonicParsing="false" text="Create Requisition" />
+                                                          <Button fx:id="btnCreateRequisition" mnemonicParsing="false" onAction="#createRequisition" text="Create Requisition" />
                                                             <Button fx:id="btnRemoveItem" mnemonicParsing="false" onAction="#removeItem" text="Remove Item" />
                                                         </buttons>
                                                       </ButtonBar>
