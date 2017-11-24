@@ -56,7 +56,16 @@
                         </AnchorPane>
                     </content>
                   </TitledPane>
-                  <TableView fx:id="tableSuppliers" layoutX="217.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                  <VBox layoutX="410.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <TableView fx:id="tableSuppliers" prefHeight="550.0" prefWidth="185.0" />
+                        <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                          <buttons>
+                            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#delete" text="Delete" />
+                          </buttons>
+                        </ButtonBar>
+                     </children>
+                  </VBox>
                </children></AnchorPane>
          </center>
       </BorderPane>
