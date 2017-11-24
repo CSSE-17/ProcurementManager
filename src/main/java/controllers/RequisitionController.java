@@ -10,12 +10,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.NumberStringConverter;
 import models.ItemsEntity;
 import models.SelectedItem;
 import util.UniqueID;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RequisitionController implements Controller{
     @FXML
@@ -88,9 +89,12 @@ public class RequisitionController implements Controller{
         TableColumn<SelectedItem, String> itemNameCol = new TableColumn<>("Item Name");
         itemNameCol.setCellValueFactory(new PropertyValueFactory<>("itemName"));
 
-        TableColumn<SelectedItem, String> qtyCol = new TableColumn<>("Quantity");
+        TableColumn<SelectedItem, Number> qtyCol = new TableColumn<>("Quantity");
         qtyCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        qtyCol.setCellFactory(TextFieldTableCell.<SelectedItem, Number>forTableColumn(new NumberStringConverter()));
+        qtyCol.setEditable(true);
 
+        tableSelectedItems.setEditable(true);
         tableSelectedItems.getColumns().addAll(itemNameCol, qtyCol);
     }
 
@@ -103,6 +107,14 @@ public class RequisitionController implements Controller{
         SelectedItem selectedItem = new SelectedItem(item.getItemName(), 0);
 
         tableSelectedItems.getItems().add(selectedItem);
+    }
+
+    public void removeItem() {
+        ObservableList<SelectedItem> itemSelected, allItems;
+        allItems = tableSelectedItems.getItems();
+        itemSelected = tableSelectedItems.getSelectionModel().getSelectedItems();
+
+        itemSelected.forEach(allItems::remove);
     }
 
     @Override
