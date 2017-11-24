@@ -50,4 +50,15 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
         session.close();
         return list;
     }
+
+    @Override
+    public void delete(T instance) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.delete(instance);
+
+        session.getTransaction().commit();
+        session.close();
+    }
 }

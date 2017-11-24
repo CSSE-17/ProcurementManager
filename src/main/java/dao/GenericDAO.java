@@ -11,4 +11,9 @@ public interface GenericDAO <T>{
      * Read all instances from table
      */
     List read(Class c);
+
+    /**
+     * Delete instance.
+     */
+    void delete(T instance);
 }

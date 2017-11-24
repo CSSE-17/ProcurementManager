@@ -4,12 +4,11 @@ import dao.GenericDAOImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.SupplierEntity;
+
+import java.util.Optional;
 
 public class SupplierController implements Controller {
     @FXML
@@ -41,6 +40,9 @@ public class SupplierController implements Controller {
         dao.setup();
         dao.create(supplier);
         dao.exit();
+
+        loadData();
+        clearForm();
     }
 
     @Override
@@ -58,6 +60,8 @@ public class SupplierController implements Controller {
 
     @Override
     public void loadData() {
+        tableSuppliers.getColumns().clear();
+
         dao.setup();
         ObservableList<SupplierEntity> sups = FXCollections.observableArrayList(dao.read(SupplierEntity.class));
         dao.exit();
@@ -81,5 +85,46 @@ public class SupplierController implements Controller {
         tableSuppliers.setItems(sups);
         tableSuppliers.getColumns().addAll(supplierIdCol, supplierNameCol, supplierEmailCol,
                 supplierPhoneCol, supplierAddressCol);
+    }
+
+    @Override
+    public void delete() {
+        SupplierEntity supplier = getSelectedInstance();
+
+        if (supplier != null) {
+            Alert confDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confDialog.setTitle("Confirm action!");
+            confDialog.setHeaderText("Are you sure you want to permanently delete supplier " + supplier.getName() + "?");
+            Optional<ButtonType> result = confDialog.showAndWait();
+
+            if (result.isPresent() && result.get() != ButtonType.OK) {
+                return;
+            }
+
+            dao.setup();
+            dao.delete(supplier);
+            dao.exit();
+            loadData();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Select a supplier first.");
+            alert.showAndWait();
+        }
+    }
+
+    @Override
+    public <T> T getSelectedInstance() {
+        SupplierEntity supplier = (SupplierEntity) tableSuppliers.getSelectionModel().selectedItemProperty().get();
+        return (T) supplier;
+    }
+
+    @Override
+    public void clearForm() {
+        txtSupplierID.clear();
+        txtSupplierName.clear();
+        txtEmail.clear();
+        txtPhone.clear();
+        txtAddress.clear();
     }
 }
