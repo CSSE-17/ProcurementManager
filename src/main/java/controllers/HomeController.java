@@ -51,6 +51,11 @@ public class HomeController implements Initializable {
         loadCenterPanel("/views/items.fxml");
         LOG.info("Navigated to Items");
     }
+
+    public void loadPOrderPanel() {
+        loadCenterPanel("/views/purchaseorder.fxml");
+        LOG.info("Navigated to Prchased Orders");
+    }
     /**
      * Loads the FXML scene to the center of home borderpane.
      *
