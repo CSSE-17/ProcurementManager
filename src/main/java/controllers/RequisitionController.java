@@ -1,23 +1,23 @@
 package controllers;
 
 import dao.GenericDAOImpl;
+import dao.RequisitionDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.NumberStringConverter;
-import models.ItemsEntity;
-import models.RequisitionEntity;
-import models.RequisitionItemEntity;
-import models.SelectedItem;
+import models.*;
 import util.UniqueID;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -30,6 +30,10 @@ public class RequisitionController implements Controller{
     private TextField txtItemsFilter;
     @FXML
     private TableView tableSelectedItems;
+    @FXML
+    private TableView table_requisitions;
+    @FXML
+    private Button btnApprove;
 
     GenericDAOImpl dao;
     private ArrayList<SelectedItem> selectedItems;
@@ -41,6 +45,11 @@ public class RequisitionController implements Controller{
         generateRequisitionId();
         loadItems();
         initSelectedItems();
+        loadRequisitions();
+
+        if (!LoginController.getLoggedInUserType().equals("staff_manager")) {
+            btnApprove.setDisable(true);
+        }
     }
 
     private void generateRequisitionId() {
@@ -129,6 +138,7 @@ public class RequisitionController implements Controller{
         requisition.setRequisitionId(txtReqID.getText());
         requisition.setDate(new Timestamp(System.currentTimeMillis()));
         requisition.setCreatedBy(LoginController.getLoggedInUser());
+        requisition.setStatus("pending");
 
         dao.setup();
 
@@ -145,8 +155,46 @@ public class RequisitionController implements Controller{
         }
 
         clearForm();
+        loadRequisitions();
 
         dao.exit();
+    }
+
+    private void loadRequisitions() {
+        table_requisitions.getColumns().clear();
+
+        dao.setup();
+        ObservableList<RequisitionEntity> reqs = FXCollections.observableArrayList(dao.read(RequisitionEntity.class));
+        dao.exit();
+
+        TableColumn<RequisitionEntity, String> requisitionIdCol = new TableColumn<>("Requisition ID");
+        requisitionIdCol.setCellValueFactory(new PropertyValueFactory<>("requisitionId"));
+
+        TableColumn<RequisitionEntity, String> createdByCol = new TableColumn<>("Created By");
+        createdByCol.setCellValueFactory(new PropertyValueFactory<>("createdBy"));
+
+        TableColumn<RequisitionEntity, Date> dateCol = new TableColumn<>("Created Date");
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        TableColumn<RequisitionEntity, String> reqStatus = new TableColumn<>("Status");
+        reqStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        table_requisitions.setItems(reqs);
+        table_requisitions.getColumns().addAll(requisitionIdCol, createdByCol, dateCol, reqStatus);
+    }
+
+    public void approveRequisition() {
+        RequisitionEntity req = (RequisitionEntity) table_requisitions.getSelectionModel().getSelectedItem();
+        req.setStatus("approved");
+
+        RequisitionDAO reqDAO = new RequisitionDAO();
+        reqDAO.setup();
+
+        reqDAO.update(req);
+
+        reqDAO.exit();
+
+        loadRequisitions();
     }
 
     @Override

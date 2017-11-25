@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="498.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PurchaseOrderController">
+    <children>
+        <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #0c8191;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label layoutX="14.0" layoutY="28.0" text="Suppliers" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="14.0">
+                            <font>
+                                <Font name="Open Sans Semibold" size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </top>
+            <center>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <TitledPane animated="false" layoutX="57.0" layoutY="51.0" text="Purchased Orders" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="400.0">
+                                    <children>
+                                        <VBox layoutX="45.0" layoutY="25.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                            <children>
+                                                <Label text="Purchase Order ID" />
+                                                <TextField fx:id="txtPOID" />
+                                                <Label text="Requisition ID" />
+                                                <ComboBox fx:id="txtReqID" prefWidth="150.0" promptText="Select" />
+                                                <Label text="Supplier ID" />
+                                                <ComboBox fx:id="txtSupID" prefWidth="150.0" promptText="Select" />
+                                                <Label text="Total Amount" />
+                                                <TextField fx:id="txtTotal" />
+                                                <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                                <buttons>
+                                                        <Button fx:id="btnAdd" alignment="CENTER" mnemonicParsing="false" onAction="#create" text="Create" />
+                                                </buttons>
+                                                </ButtonBar>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <VBox layoutX="410.0" layoutY="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                            <children>
+                                <TableView fx:id="tablePurchaseOrders" prefHeight="550.0" prefWidth="185.0" />
+                                <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+                            </children>
+                        </VBox>
+                    </children></AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

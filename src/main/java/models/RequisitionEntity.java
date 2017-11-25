@@ -10,6 +10,7 @@ public class RequisitionEntity {
     private Timestamp date;
     private String createdBy;
     private Double value;
+    private String status;
 
     @Id
     @Column(name = "requisition_id")
@@ -74,5 +75,15 @@ public class RequisitionEntity {
         result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
         result = 31 * result + (value != null ? value.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
