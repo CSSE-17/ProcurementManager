@@ -1,11 +1,13 @@
 package controllers;
 
 import dao.GenericDAOImpl;
+import dao.RequisitionDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -30,6 +32,8 @@ public class RequisitionController implements Controller{
     private TableView tableSelectedItems;
     @FXML
     private TableView table_requisitions;
+    @FXML
+    private Button btnApprove;
 
     GenericDAOImpl dao;
     private ArrayList<SelectedItem> selectedItems;
@@ -42,6 +46,10 @@ public class RequisitionController implements Controller{
         loadItems();
         initSelectedItems();
         loadRequisitions();
+
+        if (!LoginController.getLoggedInUserType().equals("staff_manager")) {
+            btnApprove.setDisable(true);
+        }
     }
 
     private void generateRequisitionId() {
@@ -173,6 +181,20 @@ public class RequisitionController implements Controller{
 
         table_requisitions.setItems(reqs);
         table_requisitions.getColumns().addAll(requisitionIdCol, createdByCol, dateCol, reqStatus);
+    }
+
+    public void approveRequisition() {
+        RequisitionEntity req = (RequisitionEntity) table_requisitions.getSelectionModel().getSelectedItem();
+        req.setStatus("approved");
+
+        RequisitionDAO reqDAO = new RequisitionDAO();
+        reqDAO.setup();
+
+        reqDAO.update(req);
+
+        reqDAO.exit();
+
+        loadRequisitions();
     }
 
     @Override
