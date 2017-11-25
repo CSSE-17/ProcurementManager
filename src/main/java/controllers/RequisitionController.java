@@ -13,9 +13,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.NumberStringConverter;
 import models.ItemsEntity;
+import models.RequisitionEntity;
+import models.RequisitionItemEntity;
 import models.SelectedItem;
 import util.UniqueID;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class RequisitionController implements Controller{
@@ -121,6 +124,29 @@ public class RequisitionController implements Controller{
     public void createRequisition() {
         ObservableList<SelectedItem> allItems;
         allItems = tableSelectedItems.getItems();
+
+        RequisitionEntity requisition = new RequisitionEntity();
+        requisition.setRequisitionId(txtReqID.getText());
+        requisition.setDate(new Timestamp(System.currentTimeMillis()));
+        requisition.setCreatedBy(LoginController.getLoggedInUser());
+
+        dao.setup();
+
+        dao.create(requisition);
+
+        for (SelectedItem item : allItems) {
+            RequisitionItemEntity req_item = new RequisitionItemEntity();
+            req_item.setReqId(requisition.getRequisitionId());
+            req_item.setItemName(item.getItemName());
+            req_item.setQty(item.getQty());
+            req_item.setStatus("pending");
+
+            dao.create(req_item);
+        }
+
+        clearForm();
+
+        dao.exit();
     }
 
     @Override
@@ -150,6 +176,7 @@ public class RequisitionController implements Controller{
 
     @Override
     public void clearForm() {
-
+        generateRequisitionId();
+        tableSelectedItems.getItems().clear();
     }
 }
