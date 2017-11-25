@@ -45,24 +45,35 @@
                                     <Label text="Total Amount" />
                                     <TextField fx:id="totalAmount" />
                                     <Label text="Status" />
-                                    <TextField fx:id="status" />
+                                    <TextField fx:id="status" editable="false" />
                                     <ButtonBar prefHeight="40.0" prefWidth="200.0">
                                       <buttons>
-                                          <Button mnemonicParsing="false" text="Update" />
-                                          <Button mnemonicParsing="false" text="Delete" />
+                                          <Button fx:id="deliveryNoteUpdate" minWidth="53.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" text="Update" />
+                                          <Button minWidth="51.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" text="Delete" />
                                         <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#create" text="Add" />
                                       </buttons>
                                     </ButtonBar>
-                                    <Label text="----------------Items -----------------">
+                                    <Button mnemonicParsing="false" onAction="#clearForm" prefHeight="30.0" prefWidth="70.0" text="Close">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Label text="Items  Status">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
                                     </Label>
                                     <ComboBox fx:id="comboItem" prefWidth="270.0" />
                                     <Button fx:id="delivery" minWidth="70.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Delivered">
                                        <padding>
                                           <Insets right="10.0" />
                                        </padding>
+                                       <VBox.margin>
+                                          <Insets left="60.0" />
+                                       </VBox.margin>
                                     </Button>
                                  </children>
                               </VBox>
