@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="498.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupplierController">
+<AnchorPane prefHeight="498.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupplierController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -47,6 +47,7 @@
                                     <TextArea fx:id="txtAddress" prefHeight="200.0" prefWidth="200.0" />
                                     <ButtonBar prefHeight="40.0" prefWidth="200.0">
                                       <buttons>
+                                          <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#update" text="Update" />
                                         <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#create" text="Add" />
                                       </buttons>
                                     </ButtonBar>

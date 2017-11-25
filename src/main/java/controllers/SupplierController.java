@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.GenericDAOImpl;
+import dao.SupplierDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,7 +24,8 @@ public class SupplierController implements Controller {
     private TextArea txtAddress;
     @FXML
     private TableView tableSuppliers;
-
+    @FXML
+    private Button btnUpdate;
 
     GenericDAOImpl dao;
 
@@ -31,18 +33,69 @@ public class SupplierController implements Controller {
         dao = new GenericDAOImpl();
         tableSuppliers.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         loadData();
+
+        tableSuppliers.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            SupplierEntity entity = (SupplierEntity) obs.getValue();
+
+            if (entity == null) {
+                return;
+            }
+
+            String supId = entity.getSupplierId();
+            String SupName = entity.getName();
+            String address = entity.getAddress();
+            String email = entity.getEmail();
+            String phone = entity.getPhone();
+
+
+            txtSupplierID.setText(supId);
+            txtSupplierName.setText(SupName);
+            txtAddress.setText(address);
+            txtEmail.setText(email);
+            txtPhone.setText(phone);
+
+           // btnAdd.setVisible(false);
+            btnUpdate.setVisible(true);
+          //  btn_delete.setVisible(true);
+        });
+
+    }
+
+    public void update() {
+        SupplierEntity supplier = getFormData();
+        SupplierDAO dao = new SupplierDAO();
+
+        dao.setup();
+        dao.update(supplier);
+        dao.exit();
+
+        loadData();
+        clearForm();
     }
 
     @Override
     public void create() {
         SupplierEntity supplier = getFormData();
-
-        dao.setup();
-        dao.create(supplier);
-        dao.exit();
-
-        loadData();
-        clearForm();
+        try {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Update Alert");
+            alert.setHeaderText("Item Add Confirmation");
+            alert.setContentText("Do you want to Add this Item Details ? ");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                dao.setup();
+                dao.create(supplier);
+                dao.exit();
+            } else {
+            }
+            loadData();
+            clearForm();
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Fields Cannot be Empty");
+            alert.showAndWait();
+        }
     }
 
     @Override
